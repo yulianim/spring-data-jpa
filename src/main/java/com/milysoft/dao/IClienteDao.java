@@ -1,11 +1,10 @@
 package com.milysoft.dao;
 
-import java.util.List;
+import org.springframework.data.repository.CrudRepository;
 
 import com.milysoft.model.Cliente;
 
-public interface IClienteDao {
-	public List<Cliente> findAll();
-	public void save(Cliente cliente);
-
+public interface IClienteDao extends CrudRepository<Cliente, Long>{
+	
+	
 }
