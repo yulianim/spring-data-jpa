@@ -44,7 +44,7 @@ public class ClienteController{
 			
 		}
 		model.put("cliente", cliente);
-		model.put("titulo","Detalle cliente"+ cliente.getNombre());
+		model.put("titulo","Detalle del cliente: "+ cliente.getNombre());
 		return "ver";
 	}
 	
@@ -72,8 +72,8 @@ public class ClienteController{
 			return "form";
 		}
 		if(!foto.isEmpty()) {
-			Path directorioRecursos=Paths.get("src//main//resources//static//uploads");
-			String rootPath=directorioRecursos.toFile().getAbsolutePath();
+			
+			String rootPath="c://Temp//uploads";
 			try {
 				byte[] bytes=foto.getBytes();
 				Path rutaCompleta=Paths.get(rootPath+"//"+foto.getOriginalFilename());
