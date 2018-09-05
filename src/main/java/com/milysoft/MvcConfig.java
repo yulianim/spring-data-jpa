@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @Configuration
 public class MvcConfig extends WebMvcConfigurerAdapter{
 
-	private final Logger log=LoggerFactory.getLogger(getClass());
+	/*private final Logger log=LoggerFactory.getLogger(getClass());
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		// TODO Auto-generated method stub
@@ -19,7 +19,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter{
 		String resourcePath=Paths.get("uploads").toAbsolutePath().toUri().toString();
 		log.info(resourcePath);
 		registry.addResourceHandler("/uploads/**").addResourceLocations(resourcePath);
-	}
+	}**/
 
 		
 }
