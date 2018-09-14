@@ -9,8 +9,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.milysoft.dao.IClienteDao;
+import com.milysoft.dao.IFacturaDao;
 import com.milysoft.dao.IProductoDao;
 import com.milysoft.model.Cliente;
+import com.milysoft.model.Factura;
 import com.milysoft.model.Producto;
 
 @Service
@@ -21,6 +23,8 @@ public class ClienteServiceImpl implements IClienteService{
 	
 	@Autowired
 	private IProductoDao productoDao;
+	@Autowired
+	private IFacturaDao facturaDao;
 	
 	@Transactional(readOnly=true)
 	public List<Cliente> findAll() {
@@ -50,15 +54,24 @@ public class ClienteServiceImpl implements IClienteService{
 	}
 
 	@Override
+	@Transactional(readOnly=true)
 	public Page<Cliente> findAll(Pageable pageable) {
 		// TODO Auto-generated method stub
 		return clienteDao.findAll(pageable);
 	}
 
 	@Override
+	@Transactional(readOnly=true)
 	public List<Producto> findByNombre(String term) {
 		// TODO Auto-generated method stub
 		return productoDao.findByNombre(term);
+	}
+
+	@Override
+	@Transactional
+	public void saveFactura(Factura factura) {
+		// TODO Auto-generated method stub
+		facturaDao.save(factura);
 	}
 	
 
