@@ -73,6 +73,12 @@ public class ClienteServiceImpl implements IClienteService{
 		// TODO Auto-generated method stub
 		facturaDao.save(factura);
 	}
+
+	@Override
+	public Producto findProductoById(Long id) {
+		// TODO Auto-generated method stub
+		return productoDao.findOne(id);
+	}
 	
 
 }
