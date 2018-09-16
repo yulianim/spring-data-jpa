@@ -75,9 +75,17 @@ public class ClienteServiceImpl implements IClienteService{
 	}
 
 	@Override
+	@Transactional(readOnly=true)
 	public Producto findProductoById(Long id) {
 		// TODO Auto-generated method stub
 		return productoDao.findOne(id);
+	}
+
+	@Override
+	@Transactional(readOnly=true)
+	public Factura findFacturaById(Long id) {
+		// TODO Auto-generated method stub
+		return facturaDao.findOne(id);
 	}
 	
 
