@@ -87,6 +87,12 @@ public class ClienteServiceImpl implements IClienteService{
 		// TODO Auto-generated method stub
 		return facturaDao.findOne(id);
 	}
+
+	@Override
+	@Transactional
+	public void deleteFactura(Long id) {
+		facturaDao.delete(id);		
+	}
 	
 
 }
