@@ -20,4 +20,5 @@ import com.milysoft.model.Producto;
 	public Producto findProductoById(Long id);
 	public Factura findFacturaById(Long id);
 	public void deleteFactura(Long id);
+	public Factura fetchFacturaByIdWidthClienteWidthItemFacturaWidthProducto(Long id);
 }
