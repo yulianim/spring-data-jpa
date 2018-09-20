@@ -53,7 +53,7 @@ public class ClienteController{
 	
 	@GetMapping(value="/ver/{id}")
 	public String ver(@PathVariable(value="id") Long id, Map<String, Object> model, RedirectAttributes flash) {
-		Cliente cliente=clienteService.findOne(id);
+		Cliente cliente=clienteService.fetchByIdWithFacturas(id);
 		if(cliente==null) {
 			flash.addAttribute("error", "El cliente no existe");
 			return "redirect:/listar";

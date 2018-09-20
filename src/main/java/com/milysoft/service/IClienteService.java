@@ -14,6 +14,7 @@ import com.milysoft.model.Producto;
 	public Page<Cliente> findAll(Pageable pageable);
 	public void save(Cliente cliente);
 	public Cliente findOne(Long id);
+	public Cliente fetchByIdWithFacturas(Long id);
 	public void delete(Long id);
 	public List<Producto> findByNombre(String term);
 	public void saveFactura(Factura factura);
