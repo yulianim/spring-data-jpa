@@ -9,9 +9,12 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.User.UserBuilder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import com.milysoft.auth.handler.LoginSuccessHandler;
 @Configuration
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
-	
+	@Autowired
+	private LoginSuccessHandler successHandler;
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/", "/css/**","/js/**", "/image/**", "/listar").permitAll().
@@ -21,7 +24,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
 		antMatchers("/eliminar/**").hasAnyRole("ADMIN").
 		antMatchers("/factura/**").hasAnyRole("ADMIN").
 		anyRequest().authenticated().and().
-		formLogin().loginPage("/login").
+		formLogin().successHandler(successHandler).
+		loginPage("/login").
 		permitAll().and().
 		logout().permitAll().and().exceptionHandling().accessDeniedPage("/error_403");
 	}
