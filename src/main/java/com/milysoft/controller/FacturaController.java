@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,7 +27,7 @@ import com.milysoft.model.Factura;
 import com.milysoft.model.ItemFactura;
 import com.milysoft.model.Producto;
 import com.milysoft.service.IClienteService;
-
+@Secured("ROLE_ADMIN")
 @Controller
 @RequestMapping("/factura")
 @SessionAttributes("factura")
