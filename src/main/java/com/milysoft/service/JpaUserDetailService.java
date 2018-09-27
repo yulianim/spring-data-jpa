@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.milysoft.dao.IUsuarioDao;
 import com.milysoft.model.Role;
 import com.milysoft.model.Usuario;
-@Service("jpaUserDetailsService")
+@Service("jpaUserDetailService")
 public class JpaUserDetailService implements UserDetailsService{
 
 	@Autowired
@@ -36,12 +36,13 @@ public class JpaUserDetailService implements UserDetailsService{
 		}
 		List<GrantedAuthority> authorities=new ArrayList<GrantedAuthority>();
 		for(Role role:  usuario.getRoles()) {
+			logger.info("Role: ".concat(role.getAuthority()));
 			authorities.add(new SimpleGrantedAuthority(role.getAuthority()));
 			
 		}
 		if(authorities.isEmpty()) {
 			logger.error("Error login: no existe el usuario: '"+username+"' no tiene roles asignados");
-			throw new UsernameNotFoundException("Error login: no existe el usuario: '"+username+"' no tiene roles asignados");
+			throw new UsernameNotFoundException("Error en el login: usuario '" +username+ "' no tiene roles asignados");
 		}
 		return new User(usuario.getUsername(), usuario.getPassword(), usuario.isEnabled(), true, true, true, authorities);
 	}
