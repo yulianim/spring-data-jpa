@@ -31,7 +31,7 @@ public class MvcConfig implements WebMvcConfigurer{
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-	@Bean
+	@Bean(name="localeResolver")
 	public LocaleResolver localeResorver() {
 		SessionLocaleResolver localeResolver=new SessionLocaleResolver();
 		localeResolver.setDefaultLocale(new Locale("es","ES"));
